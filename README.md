@@ -5,6 +5,7 @@ Apply the pruning strategy of [Network Slimming](http://openaccess.thecvf.com/co
 
 The size of input images is `224x224`.
 
+#### Comparisons of different prune ratios
 |  Step  | Prune Ratio | L1 value | Parameters | Top1 Accuracy (%) | Speed (FPS) |
 | :---------------: | :------: | :------: | :--------------------------: | :-----------------: | :-------------------: |
 |    0     |  0   |  0   |       9.8MB        |        93.24        |         6.58         |
@@ -16,10 +17,11 @@ The size of input images is `224x224`.
 
 
 
+#### Comparisons of speeds on different models
 
 |  Model  | Speed on PC (FPS) | Speed on iPhone7p (FPS) |
 | :---------------: | :------: | :--------------------------: |
-|    ResNet50     |  1   |       3.6        |
-|    MobileNet v2     |  6.58 |           24.14            |  
-|    Pruned MobileNet v2 (with BN)     |  12.61  |           55.34            | 
-|    Pruned MobileNet v2 (merging BN)     |  17.24  |           73.28\\(200 when the size is downsampled to `96x96` )            | 
+|    ResNet50     |  1   |    3.6    |
+|    MobileNet v2     |  6.58 |   24.14   |  
+|    Pruned MobileNet v2 (with BN)     |  12.61  |  55.34    | 
+|    Pruned MobileNet v2 (merging BN)     |  17.24  |  73.28<br>(200 when the input is resized into `96x96` ) | 
