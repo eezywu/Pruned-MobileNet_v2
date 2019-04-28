@@ -9,25 +9,25 @@ from copy import deepcopy
 from sklearn import preprocessing
 from tqdm import tqdm
 
-IMAGE_ROOT = '/media/labseashell/软件/datas/flowers/'
-TEST_TXT = open(IMAGE_ROOT + 'all_test_good.txt', 'r')
-FILE_LINES = TEST_TXT.readlines()
-MEAN_FILE = "/media/labseashell/软件/datas/all_mean_good_256.npy"
+image_root = '/media/labseashell/软件/datas/flowers/'
+image_txt = open(image_root + 'all_test_good.txt', 'r')
+image_lines = image_txt.readlines()
+mean_file = "/media/labseashell/软件/datas/all_mean_good_256.npy"
 
-CAFFE_MODEL= "pruned_mobilenet_v2.caffemodel"
-NET_FILE = "pruned_mobilenet_v2.prototxt"
+model= "pruned_mobilenet_v2.caffemodel"
+prototxt = "pruned_mobilenet_v2.prototxt"
 
-if not os.path.isfile(CAFFE_MODEL): 
+if not os.path.isfile(model): 
     print("caffemodel is not exist...")
 # caffe.set_mode_gpu()
-net = caffe.Net(NET_FILE, CAFFE_MODEL, caffe.TEST)
+net = caffe.Net(prototxt, model, caffe.TEST)
 
 # print net.blobs['data'].data.shape
 
 batch_size = 1
 transformer = caffe.io.Transformer({'data': (batch_size,3,224,224)})
 transformer.set_transpose('data', (2,0,1))
-mean_matrix = np.load(MEAN_FILE)
+mean_matrix = np.load(mean_file)
 mean_value = np.mean(mean_matrix, axis=(1,2))
 # print(mean_value)
 transformer.set_mean('data', mean_value)
@@ -39,15 +39,15 @@ top1_num = 0
 top5_num = 0
 total_num = 0
 labels = []
-for i, FILE_LINE in enumerate(tqdm(FILE_LINES)):
+for i, line in enumerate(tqdm(image_lines)):
     if i > 1000:
         break
-    FILE_LINE = FILE_LINE.replace('\n', '')
-    IMAGE_NAME = FILE_LINE.split(' ')[0]
-    label = int(FILE_LINE.split(' ')[1])
+    line = line.replace('\n', '')
+    image_name = line.split(' ')[0]
+    label = int(line.split(' ')[1])
     labels.append(label)
     try:
-        im = caffe.io.load_image(IMAGE_ROOT + IMAGE_NAME)
+        im = caffe.io.load_image(image_root + image_name)
         im_input_temp = transformer.preprocess('data', im)
         net.blobs['data'].data[i%batch_size] = im_input_temp
         if i % batch_size == batch_size - 1:
@@ -63,7 +63,7 @@ for i, FILE_LINE in enumerate(tqdm(FILE_LINES)):
                 total_num += 1
             labels = []
     except ValueError:
-        print('error occurred: %s' % IMAGE_NAME)
+        print('error occurred: %s' % image_name)
 top1 = top1_num * 1.0 / total_num
 top5 = top5_num * 1.0 / total_num
 print("top1: %.4f\t top5: %.4f" % (top1, top5))
