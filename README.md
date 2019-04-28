@@ -12,4 +12,14 @@ The size of input images is `224x224`.
 |    2     |  0.3  |  0.001   |            7.2MB            |        91.84        |         -         |
 |    3     |  0.3 + 0.7 * 0.3 = 0.51  |  0.001   |            5.4MB            |        91.26        |         -         |
 |    4     |  0.51 + 0.49 * 0.2 = 0.608 |  0  |            4.6MB            |        92.13        |         12.61         |
-|    5     |  0.608 (merge bn)  |  -  |            4.5MB            |        92.13        |         17.24         |
+|    5     |  0.608 (merging BN)  |  -  |            4.5MB            |        92.13        |         17.24         |
+
+
+
+
+|  Model  | Speed on PC (FPS) | Speed on iPhone7p (FPS) |
+| :---------------: | :------: | :--------------------------: |
+|    ResNet50     |  1   |       3.6        |
+|    MobileNet v2     |  6.58 |           24.14            |  
+|    Pruned MobileNet v2 (with BN)     |  12.61  |           55.34            | 
+|    Pruned MobileNet v2 (merging BN)     |  17.24  |           73.28 (200 when the size is downsampled to `96x96` )            | 
