@@ -1,0 +1,20 @@
+net: "models/3_prune0.3_0.3_mobilenet_v2_train.prototxt"
+# iter_step: 2
+test_iter: 37614
+test_interval: 2500
+test_initialization: false
+display: 250
+base_lr: 0.001
+lr_policy: "multistep"
+stepvalue: 10000
+stepvalue: 20000
+stepvalue: 30000
+stepvalue: 40000
+gamma: 0.1
+max_iter: 50000
+momentum: 0.9
+weight_decay: 0.0001
+snapshot: 2500
+snapshot_prefix: "weights/3_prune0.3_0.3_mobilenet_v2_train"
+solver_mode: GPU
+snapshot_after_train: false
