@@ -3,7 +3,7 @@ Apply the pruning strategy of [Network Slimming](http://openaccess.thecvf.com/co
 
 ## Results
 
-The size of input images is `224x224`.
+The size of the input image is `224x224`.
 
 #### Comparisons of different prune ratios
 |  Step  | Prune Ratio | L1 value | Parameters | Top1 Accuracy (%) | Speed (FPS) |
