@@ -24,4 +24,4 @@ The size of input images is `224x224`.
 |    ResNet50     |  1   |    3.6    |
 |    MobileNet v2     |  6.58 |   24.14   |  
 |    Pruned MobileNet v2 (with BN)     |  12.61  |  55.34    | 
-|    Pruned MobileNet v2 (merging BN)     |  17.24  |  73.28<br>(200 when the input is resized into `96x96` ) | 
+|    Pruned MobileNet v2 (merging BN)     |  17.24  |  73.28<br>(200+ when the input is resized into `96x96` ) | 
