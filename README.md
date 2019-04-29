@@ -2,6 +2,8 @@
 
 Apply the pruning strategy of [Network Slimming](http://openaccess.thecvf.com/content_iccv_2017/html/Liu_Learning_Efficient_Convolutional_ICCV_2017_paper.html) for MobileNet_v2.
 
+The Caffe implementation of the algorithm is available in [link](https://github.com/eezywu/Network-Slimming).
+
 ## Results
 
 The size of the input image is `224x224`.
