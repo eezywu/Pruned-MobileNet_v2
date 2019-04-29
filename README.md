@@ -1,4 +1,5 @@
 # Pruned-MobileNet_v2
+
 Apply the pruning strategy of [Network Slimming](http://openaccess.thecvf.com/content_iccv_2017/html/Liu_Learning_Efficient_Convolutional_ICCV_2017_paper.html) for MobileNet_v2.
 
 ## Results
@@ -25,3 +26,7 @@ The size of the input image is `224x224`.
 |    MobileNet v2     |  6.58 |   24.14   |  
 |    Pruned MobileNet v2 (with BN)     |  12.61  |  55.34    | 
 |    Pruned MobileNet v2 (merging BN)     |  17.24  |  73.28<br>(200+ when the input is resized into `96x96` ) | 
+
+## Contact
+
+If you have any problems, please feel free to contact me via eezywu@163.com.
