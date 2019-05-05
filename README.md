@@ -21,7 +21,7 @@ The size of the input image is `224x224`.
 
 #### Comparisons of speeds on different models
 
-|  Model  | Speed on PC (ms) | Speed on iPhone7p (ms) |
+|  Model  | Speed on PC | Speed on iPhone7p (using NCNN) |
 | :---------------: | :------: | :--------------------------: |
 |    ResNet50     |  about 1000ms   |    277.8ms    |
 |    MobileNet v2     |  152.0ms |   41.4ms   |  
